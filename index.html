@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Telefon va Ism</title>
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            margin: 40px; 
+            line-height: 1.6;
+        }
+        .success { 
+            color: green; 
+            background: #e8f5e9; 
+            padding: 20px; 
+            border-radius: 8px; 
+            border: 2px solid green;
+            max-width: 500px;
+        }
+        .error { 
+            color: red; 
+            background: #ffebee; 
+            padding: 20px; 
+            border-radius: 8px; 
+            border: 2px solid red;
+            max-width: 500px;
+        }
+        input {
+            width: 100%;
+            max-width: 400px;
+            padding: 10px;
+            margin: 10px 0;
+            font-size: 16px;
+        }
+        button {
+            padding: 12px 25px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h2>Telefon va ism</h2>
+
+    {% if res is not none %}
+        {% if res|length == 1 and res[0] == "Ma'lumotlar noto'g'ri kiritildi" %}
+            <div class="error">
+                ❌ {{ res[0] }}
+            </div>
+        {% else %}
+            <div class="success">
+                <h3>✅ Muvaffaqiyatli yuborildi!</h3>
+                <p><strong>Ism:</strong> {{ res[0] }}</p>
+                <p><strong>Telefon:</strong> {{ res[1] }}</p>
+            </div>
+        {% endif %}
+        <hr>
+    {% endif %}
+
+    <form method="POST">
+        <input type="text" name="name" placeholder="Ism" required><br><br>
+        <input type="tel" name="phone" placeholder="+998 XX XXX XX XX" required><br><br>
+        <button type="submit">Yuborish</button>
+    </form>
+
+    <br>
+    <p>
+        <a href="/">Bosh sahifa</a> | 
+        <a href="/result1">Ism va Email</a> | 
+        <a href="/result2">Ikki son va Ism</a> | 
+        <a href="/fikr">Fikr-mulohaza</a>
+    </p>
+</body>
+</html>
